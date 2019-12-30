@@ -109,7 +109,7 @@ void OLEDLogo(){
 	for(int x=0;x<32;x++){
 		for(int y=0;y<32;y++){
 			OLEDSetColor(logo_c[31-y][32-x], logo_b[31-y][32-x], logo_a[31-y][32-x]);
-			OLEDRectc(x*2+16, y*2,x*2+16+2, y*2+2);
+			OLEDRectc(x*2+16, y*2,x*2+16+1, y*2+1);
 
 		}
 	}
