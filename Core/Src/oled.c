@@ -10,21 +10,15 @@ volatile uint8_t g_A;
 void OLEDInit(){
 	HAL_GPIO_WritePin(OLED_RST_GPIO_Port, OLED_RST_Pin, GPIO_PIN_RESET);
 	HAL_GPIO_WritePin(D_C_GPIO_Port, D_C_Pin, GPIO_PIN_RESET);
-	HAL_Delay(10);
+	HAL_Delay(1);
 	HAL_GPIO_WritePin(OLED_RST_GPIO_Port, OLED_RST_Pin, GPIO_PIN_SET);
 
 	HAL_SPI_Init(&hspi1);
-	HAL_Delay(10);
 
 	OLEDOff();
 	OLEDOn();
 	OLEDFillEnable(1,1);
 	OLEDSetting();
-	uint8_t a[2]={0xA1,0x00};
-	HAL_SPI_Transmit(&hspi1, a,2, 100);
-	uint8_t b[2]={0xA2,0x00};
-	HAL_SPI_Transmit(&hspi1, b,2, 100);
-
 
 	OLEDClear();
 
@@ -73,7 +67,7 @@ void OLEDClear(){
 void OLEDFillc(uint8_t C,uint8_t B, uint8_t A){
 	  OLEDRect(0, 0, 45, 63 , C,B,A, C,B,A);//分割以内とうまく描画できない(多分通信時間とかの問題
 	  OLEDRect(45, 0, 95, 63 , C,B,A, C,B,A);
-	  HAL_Delay(10);
+	  HAL_Delay(1);
 
 }
 
